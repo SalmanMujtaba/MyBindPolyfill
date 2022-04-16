@@ -9,8 +9,8 @@ function buidProfile(someArgument, ...moreArguments) {
   return `${this.firstName} ${this.lastName} ${someArgument} ${moreArguments.join(" ")}`;
 }
 
-let firstBind = buidProfile.bind(person1, "helloFirst", "helloSecond", "helloThird");
-console.log(firstBind());
+// let firstBind = buidProfile.bind(person1, "helloFirst", "helloSecond", "helloThird");
+// console.log(firstBind());
 
 Function.prototype.myBind = function(context, ...bindArgs) {
 // Need 3 things:
@@ -26,3 +26,8 @@ Function.prototype.myBind = function(context, ...bindArgs) {
   }
 }
 
+let customBind = buidProfile.myBind(person1, "helloFirst", "helloSecond", "helloThird");
+console.log(customBind("helloFourth", "helloFifth"));
+
+// Output:
+// John Doe helloFirst helloSecond helloThird helloFourth helloFifth
